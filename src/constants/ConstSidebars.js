@@ -1,29 +1,33 @@
 import { ReactComponent as MenuSVG } from "../assets/menu.svg";
+import { ReactComponent as ListSVG } from "../assets/list.svg";
+import { ReactComponent as HomeSVG } from "../assets/home.svg";
+import { ReactComponent as PromedioSVG } from "../assets/calculator.svg";
+import { ReactComponent as AddClienteSVG } from "../assets/add-user.svg";
 
 const sidebarProductor = [
   {
     title: "Inicio",
     path: "/",
     exact: false,
-    icon: MenuSVG,
+    icon: HomeSVG,
   },
   {
     title: "Creación de cliente",
-    path: "/",
+    path: "/creacioncliente",
     exact: false,
-    icon: MenuSVG,
+    icon: AddClienteSVG,
   },
   {
     title: "Lista de clientes",
-    path: "/solicitud",
+    path: "/listaclientes",
     exact: false,
-    icon: MenuSVG,
+    icon: ListSVG,
   },
   {
     title: "Ver promedio de edades",
-    path: "/solicitud",
+    path: "/promedio",
     exact: false,
-    icon: MenuSVG,
+    icon: PromedioSVG,
   },
 ];
 

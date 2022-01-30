@@ -102,8 +102,8 @@ const MenuIconSVG = styled.div`
   min-height: 20px;
   padding: 10px 10px 10px 10px;
   margin: 10px 10px 10px 10px;
-  fill: #33c494;
-  background-color: rgba(51, 196, 148, 0.1);
+  fill: #284b63;
+  background-color: rgb(40, 75, 99, 0.1);
   border-radius: 12px;
   cursor: pointer;
 `;

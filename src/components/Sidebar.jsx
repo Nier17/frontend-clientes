@@ -143,19 +143,20 @@ const CustomLink = styled(NavLink)`
   color: #000000;
   text-decoration: none;
   min-width: 260px;
-  background-color: rgba(51, 196, 148, 0.1);
+  background-color: rgb(40, 75, 99, 0.1);
 
   /* margin: 10px 0px 10px 0; */
   padding: 1px 30px 1px 10px;
   :hover {
-    background-color: rgba(51, 196, 148, 0.2);
+    background-color: rgb(40, 75, 99, 0.2);
   }
   ${(props) => {
     if (props.$istrue) {
       return css`
-        background-color: rgba(51, 196, 148, 1);
+        background-color: #284b63;
+
         :hover {
-          background-color: rgba(51, 196, 148, 1);
+          background-color: #284b63;
         }
       `;
     }
@@ -195,34 +196,18 @@ const openClose = keyframes`
 
 const Container = styled.div`
   @media (max-width: 490px) {
-    /* display: none; */
     max-width: 100vw;
     width: 100%;
-    /* min-width: 100%; */
-    /* animation: ${openClose} 0.1s linear; */
     position: sticky;
     top: 78px;
     height: calc(100vh - 78px);
     overflow-y: auto;
   }
-  /* animation: ${openClose} 0.6s linear; */
-  /* animation-name: ${openClose};
-  animation-duration: 0.3s; */
   min-width: 300px;
   max-width: 300px;
   width: 100%;
-  /* min-width: 100px; */
-
-  // Añadido por el buen richi
-  /* position: sticky; */
-  /* top: 0px; */
-  /* height: 92vh; */
-  /* height: 100vh; */
-  /* height: calc(100vh - 78px); */
   overflow-y: auto;
-
   background-color: white;
-
   position: sticky;
   top: 78px;
   height: calc(100vh - 78px);
@@ -237,7 +222,6 @@ const IconSVG = styled.div`
   min-width: 30px;
   min-height: 30px;
   padding: 20px;
-  fill: #33c494;
   cursor: pointer;
   ${(props) => {
     if (props.$istrue) {
@@ -246,7 +230,7 @@ const IconSVG = styled.div`
       `;
     } else {
       return css`
-        fill: #33c494;
+        fill: #284b63;
       `;
     }
   }}
