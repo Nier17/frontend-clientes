@@ -5,6 +5,7 @@ import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import { sidebarProductor } from "../constants/ConstSidebars";
 import { ReactComponent as MenuSVG } from "../assets/menu.svg";
 import Home from "./Home";
+import Promedio from "./Clientes/Promedio";
 import ListarClientes from "./Clientes/ListarClientes";
 import CrearCliente from "./Clientes/CrearCliente";
 
@@ -52,10 +53,10 @@ const Board = () => {
             />
             <Content isHidden={showSidebar && isTinyScreen}>
               <Switch>
-                <Route path="/" component={Home} />
-                <Route path="/creacioncliente" component={Home} />
-                <Route path="/listaclientes" component={Home} />
-                <Route path="/promedio" component={Home} />
+                <Route path="/creacioncliente" component={CrearCliente} />
+                <Route path="/listaclientes" component={ListarClientes} />
+                <Route path="/promedio" component={Promedio} />
+                <Route path={["/home", "/"]} component={Home} />
               </Switch>
             </Content>
           </Container>

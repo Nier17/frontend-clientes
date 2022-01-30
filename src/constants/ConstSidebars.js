@@ -7,7 +7,7 @@ import { ReactComponent as AddClienteSVG } from "../assets/add-user.svg";
 const sidebarProductor = [
   {
     title: "Inicio",
-    path: "/",
+    path: "/home",
     exact: false,
     icon: HomeSVG,
   },
