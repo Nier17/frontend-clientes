@@ -1,15 +1,17 @@
 import * as yup from "yup";
 // import ConstDate from "../../../constants/ConstDate";
+import HelperObj from "./HelperObj";
 // import HelperObj from "../../../helpers/HelperObj";
 
 const toDatabase = (type, data) => {
   let formatted = undefined;
 
   switch (type) {
-    case "registerUser":
+    case "crearCliente":
       const schemaDatabase = yup.object({
         nombre: yup.string().trim(),
         apellido: yup.string().trim(),
+        fecnac: yup.string().trim(),
         // fechaNacimiento: yup.number().transform((value, originalValue) => {
         //   const mesId = originalValue?.mes?.id;
         //   const añoId = originalValue?.año?.id;
@@ -29,10 +31,9 @@ const toDatabase = (type, data) => {
       break;
   }
 
-  // let cleaned = HelperObj.clean(formatted);
+  let cleaned = HelperObj.clean(formatted);
 
-  // return cleaned;
-  return 5;
+  return cleaned;
 };
 
 export default { toDatabase };

@@ -4,6 +4,7 @@ import { ConnectedFocusError } from "focus-formik-error";
 import * as yup from "yup";
 import styled from "styled-components";
 import produce from "immer";
+import { InputField } from "./WithFormik";
 import Spinner from "./Spinner";
 import HelperObj from "../helpers/HelperObj";
 const FormCrearCliente = ({
@@ -18,7 +19,7 @@ const FormCrearCliente = ({
 }) => {
   const initDataFormatted = useMemo(
     () =>
-      produce({}, (draft) => {
+      produce(initData, (draft) => {
         let init = {
           nombre: "",
           apellido: "",
@@ -47,7 +48,7 @@ const FormCrearCliente = ({
       validationSchema={yup.object({
         nombre: yup.string().required("Es obligatorio completar este dato."),
         apellido: yup.string().required("Es obligatorio completar este dato."),
-        fecnac: yup.date().required("Es obligatorio completar este dato."),
+        fecnac: yup.string().required("Es obligatorio completar este dato."),
       })}
       onSubmit={(values, { setSubmitting }) => {
         onSubmit(HelperObj.clean(values));
@@ -76,7 +77,7 @@ const FormCrearCliente = ({
             )}
             <ContainerQuestion>
               <QuestionStyled text="Nombres" isRequired={true} />
-              <input
+              <InputStyled
                 type="text"
                 name="nombre"
                 placeholder="Nombres"
@@ -85,7 +86,7 @@ const FormCrearCliente = ({
             </ContainerQuestion>
             <ContainerQuestion>
               <QuestionStyled text="Apellidos" isRequired={true} />
-              <input
+              <InputStyled
                 type="text"
                 name="apellido"
                 placeholder="Apellidos"
@@ -95,7 +96,8 @@ const FormCrearCliente = ({
 
             <ContainerQuestion>
               <QuestionStyled text="Fecha de nacimiento" isRequired={true} />
-              <input
+              <InputStyled
+                type="text"
                 name="fecnac"
                 placeholder="fecha de nacimiento"
                 // hasError={touched.correo && errors.correo}
@@ -104,12 +106,15 @@ const FormCrearCliente = ({
 
             <ButtonWrapper>
               <StyledButton
-                type="primary"
-                text={"Guardar"}
-                onClick={(data) => {
+                type="submit"
+                // text={"Guardar"}
+                onClick={() => {
+                  console.log("hodssd");
                   submitForm();
                 }}
-              ></StyledButton>
+              >
+                enviar
+              </StyledButton>
             </ButtonWrapper>
             {isSubmitting && (
               <WrapperSpinner>
@@ -126,9 +131,9 @@ FormCrearCliente.defaultProps = {
   notificationTextType: "error",
 };
 
-// const InputStyled = styled(InputField)`
-//   width: 10px;
-// `;
+const InputStyled = styled(InputField)`
+  width: 10px;
+`;
 const Container = styled.div``;
 const QuestionsFlex = styled.div`
   display: flex;

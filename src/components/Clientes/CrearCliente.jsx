@@ -4,6 +4,8 @@ import Bag from "../Bag";
 import { useImmer } from "use-immer";
 import Adapter from "../../helpers/Adapter";
 import FormCrearCliente from "../FormCrearCliente";
+import ClientesAPI from "../../api/ClientesAPI";
+
 const CrearCliente = () => {
   const [data, setData] = useImmer({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -11,24 +13,28 @@ const CrearCliente = () => {
   const [notificationTextType, setNotificationTextType] = useState("error");
 
   useEffect(() => {
+    console.log(isSubmitting);
     if (isSubmitting) {
-      const formatted = Adapter.toDatabase("registerUser", data);
+      console.log("submiting inside");
 
-      setNotificationText("Se actualizó su perfil con éxito.");
-      setNotificationTextType("information");
-      setIsSubmitting(false);
+      const formatted = Adapter.toDatabase("crearCliente", data);
+      ClientesAPI.createCliente(formatted).then(() => {
+        setNotificationText("Se actualizó su perfil con éxito.");
+        setNotificationTextType("information");
+        setIsSubmitting(false);
+      });
     }
   }, [isSubmitting]);
   return (
     <BagStyled
       header={
         <Header>
-          <Title>Editar perfil</Title>
+          <Title>Crear cliente</Title>
         </Header>
       }
     >
       <FormCrearCliente
-        // initData={userData}
+        initData={{ nombre: "", apellido: "", fecnac: "" }}
         onSubmit={(data) => {
           setData(data);
           setIsSubmitting(true);
