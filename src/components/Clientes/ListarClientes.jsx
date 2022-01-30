@@ -5,7 +5,7 @@ import styled, { css } from "styled-components";
 import axios from "axios";
 import HelperDate from "../../helpers/HelperDate";
 import Bag from "../Bag";
-const URL = "http://159.223.161.105:3000/clientes";
+const URL = "http://143.198.120.82:3000/clientes";
 
 const ListarClientes = () => {
   const [clientes, setClientes] = useState([]);
