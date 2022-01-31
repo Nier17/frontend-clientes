@@ -6,6 +6,7 @@ import HelperDate from "../helpers/HelperDate";
 import Bag from "./Bag";
 import { PieChart } from "react-minimal-pie-chart";
 import HelperObj from "../helpers/HelperObj";
+import Chart from "react-apexcharts";
 
 const Home = () => {
   const [clientes, setClientes] = useState([]);
@@ -13,6 +14,61 @@ const Home = () => {
   useEffect(() => {
     ClientesAPI.getClientes(setClientes);
   }, []);
+  const [chart, setChart] = useState({
+    options: {
+      chart: {
+        id: "apexchart-example",
+      },
+      xaxis: {
+        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+      },
+    },
+    series: [
+      {
+        name: "series-1",
+        data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
+      },
+    ],
+  });
+
+  function printChart() {
+    var arrClientes = clientes;
+    var pieArr = [];
+    arrClientes.forEach((e) => {
+      var count = arrClientes.filter((x) => x.nombre === e.nombre).length;
+      e.value = count;
+    });
+    arrClientes.forEach((e) => {
+      pieArr.push({ value: e.value, label: e.nombre });
+    });
+    var unique = pieArr.filter(
+      (v, i, a) => a.findIndex((t) => t.label === v.label) === i
+    );
+    var categorias = [];
+    var datos = [];
+    unique.forEach((e) => {
+      categorias.push(e.label);
+      datos.push(e.value);
+    });
+    console.log(unique);
+    var objChart = {
+      options: {
+        chart: {
+          id: "apexchart-example",
+        },
+        xaxis: {
+          categories: categorias,
+        },
+      },
+      series: [
+        {
+          name: "número de clientes con ese nombre",
+          data: datos,
+        },
+      ],
+    };
+    setChart(objChart);
+  }
 
   useEffect(() => {}, [clientes]);
 
@@ -41,6 +97,10 @@ const Home = () => {
     console.log(unique);
     setClientesPie(unique);
     console.log(pieArr);
+  }, [clientes]);
+
+  useEffect(() => {
+    printChart();
   }, [clientes]);
 
   const tableRef = useRef();
@@ -84,19 +144,32 @@ const Home = () => {
       <Header>
         <Title>Dashboard</Title>
       </Header>
-      <Label>Distribuciones de edades de los clientes</Label>
-      <PieContainer>
-        <PieChart
-          data={clientesPie}
-          label={({ dataEntry }) => dataEntry.label}
-          radius={30}
-          labelPosition={112}
-          labelStyle={{
-            fontSize: "2px",
-            fontFamily: "sans-serif",
-          }}
-        />
-      </PieContainer>
+      <DrawsContainer>
+        <PieContainer>
+          <Label>Distribuciones de edades de los clientes</Label>
+          <PieChart
+            data={clientesPie}
+            label={({ dataEntry }) => dataEntry.label}
+            radius={40}
+            labelPosition={108}
+            labelStyle={{
+              fontSize: "6px",
+              fontFamily: "sans-serif",
+            }}
+          />
+        </PieContainer>
+        <BarsContainer>
+          <Label>Nombres más comunes por cliente</Label>
+          <div style={{ marginTop: 20 }}></div>
+          <Chart
+            options={chart.options}
+            series={chart.series}
+            type="bar"
+            width={500}
+            height={400}
+          />
+        </BarsContainer>
+      </DrawsContainer>
 
       <Table ref={tableRef} columns={COLUMNS} data={clientes} />
     </BagStyled>
@@ -111,9 +184,20 @@ const Label = styled.div`
 const BagStyled = styled(Bag)`
   flex: 1 0 0;
 `;
+const DrawsContainer = styled.div`
+  width: 1200px;
+  height: 400px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+`;
 const PieContainer = styled.div`
-  width: 600px;
-  width: 600px;
+  width: 360px;
+  /* margin: 20px;
+  padding: 20px; */
+`;
+const BarsContainer = styled.div`
+  /* margin-left: 100px; */
 `;
 const Header = styled.div`
   margin-bottom: 35px;
