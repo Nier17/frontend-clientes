@@ -91,10 +91,7 @@ const Home = () => {
       let randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
       e.color = randomColor;
     });
-
-    console.log(unique);
     setClientesPie(unique);
-    console.log(pieArr);
   }, [clientes]);
 
   useEffect(() => {

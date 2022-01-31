@@ -13,9 +13,7 @@ const CrearCliente = () => {
   const [notificationTextType, setNotificationTextType] = useState("error");
 
   useEffect(() => {
-    console.log(isSubmitting);
     if (isSubmitting) {
-      console.log("submiting inside");
 
       const formatted = Adapter.toDatabase("crearCliente", data);
       ClientesAPI.createCliente(formatted).then(() => {

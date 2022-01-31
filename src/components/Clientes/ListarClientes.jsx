@@ -11,9 +11,7 @@ const ListarClientes = () => {
     ClientesAPI.getClientes(setClientes);
   }, []);
 
-  useEffect(() => {
-    console.log(clientes);
-  }, [clientes]);
+  useEffect(() => {}, [clientes]);
 
   const tableRef = useRef();
   const COLUMNS = useMemo(
