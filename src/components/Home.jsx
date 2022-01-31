@@ -5,7 +5,6 @@ import styled, { css } from "styled-components";
 import HelperDate from "../helpers/HelperDate";
 import Bag from "./Bag";
 import { PieChart } from "react-minimal-pie-chart";
-import HelperObj from "../helpers/HelperObj";
 import Chart from "react-apexcharts";
 
 const Home = () => {
@@ -50,7 +49,6 @@ const Home = () => {
       categorias.push(e.label);
       datos.push(e.value);
     });
-    console.log(unique);
     var objChart = {
       options: {
         chart: {
@@ -109,26 +107,25 @@ const Home = () => {
       {
         Header: "ID",
         accessor: "id",
-        width: 2,
-        disableSortBy: true,
+        with: 2,
         Cell: ({ value }) => <Label>{value}</Label>,
       },
       {
         Header: "Nombre",
         accessor: "nombre",
-        width: 2,
+        with: 2,
         Cell: ({ value }) => <Label>{value || ""}</Label>,
       },
       {
         Header: "Apellido",
         accessor: "apellido",
-        width: 2,
+        with: 2,
         Cell: ({ value }) => <Label>{value || ""}</Label>,
       },
       {
         Header: "Fecha de nacimiento",
         accessor: "fecnac",
-        width: 2,
+        with: 2,
         Cell: ({ value }) => (
           <Label className="toRight">
             {value && HelperDate.toFormat(new Date(value), "DD/MM/YY")}
@@ -170,7 +167,7 @@ const Home = () => {
           />
         </BarsContainer>
       </DrawsContainer>
-
+      <Label>Lista de clientes</Label>
       <Table ref={tableRef} columns={COLUMNS} data={clientes} />
     </BagStyled>
   );
@@ -183,16 +180,26 @@ const Label = styled.div`
 `;
 const BagStyled = styled(Bag)`
   flex: 1 0 0;
+  @media (max-width: 340px) {
+    margin-left: 300px;
+  }
+  @media (max-width: 700px) {
+    margin-left: 300px;
+  }
 `;
 const DrawsContainer = styled.div`
-  width: 1200px;
-  height: 400px;
   margin-bottom: 40px;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 966px) {
+    display: block;
+  }
 `;
 const PieContainer = styled.div`
   width: 360px;
+  @media (max-width: 400px) {
+    max-width: 300px;
+  }
   /* margin: 20px;
   padding: 20px; */
 `;

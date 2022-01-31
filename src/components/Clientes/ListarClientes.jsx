@@ -22,7 +22,6 @@ const ListarClientes = () => {
         Header: "ID",
         accessor: "id",
         width: 2,
-        disableSortBy: true,
         Cell: ({ value }) => <Label>{value}</Label>,
       },
       {

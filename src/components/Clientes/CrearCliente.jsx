@@ -19,7 +19,7 @@ const CrearCliente = () => {
 
       const formatted = Adapter.toDatabase("crearCliente", data);
       ClientesAPI.createCliente(formatted).then(() => {
-        setNotificationText("Se actualizó su perfil con éxito.");
+        setNotificationText("Se registró al cliente con éxito.");
         setNotificationTextType("information");
         setIsSubmitting(false);
       });

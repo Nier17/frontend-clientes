@@ -7,6 +7,8 @@ import produce from "immer";
 import { InputField } from "./WithFormik";
 import Spinner from "./Spinner";
 import HelperObj from "../helpers/HelperObj";
+import NotificationBox from "./NotificationBox";
+import Question from "./Question";
 import Button from "./Button";
 const FormCrearCliente = ({
   initData,
@@ -69,11 +71,11 @@ const FormCrearCliente = ({
           <Container>
             {notificationText && (
               <WrapperNotification ref={notificationRef}>
-                {/* <NotificationBox
+                <NotificationBox
                   type={notificationTextType}
                   text={notificationText}
                   onClick={onClickNotification}
-                /> */}
+                />
               </WrapperNotification>
             )}
             <ContainerQuestion>
@@ -100,7 +102,7 @@ const FormCrearCliente = ({
               <InputStyled
                 type="text"
                 name="fecnac"
-                placeholder="fecha de nacimiento"
+                placeholder="formato: dd/mm/yyyy"
                 // hasError={touched.correo && errors.correo}
               />
             </ContainerQuestion>
@@ -108,21 +110,21 @@ const FormCrearCliente = ({
             <ButtonWrapper>
               <StyledButton
                 type="primary"
-                text={"Crear"}
+                text={"Registrar"}
                 onClick={() => {
-                  console.log("hodssd");
                   submitForm();
                 }}
               >
                 enviar
               </StyledButton>
             </ButtonWrapper>
-            {isSubmitting && (
-              <WrapperSpinner>
-                <Spinner />
-              </WrapperSpinner>
-            )}
           </Container>
+
+          {isSubmitting && (
+            <WrapperSpinner>
+              <Spinner />
+            </WrapperSpinner>
+          )}
         </Form>
       )}
     </Formik>
@@ -144,7 +146,12 @@ const WrapperNotification = styled.div`
   width: 650px;
   /* width: 44.5%; */
 `;
-const QuestionStyled = styled.div``;
+const StyledNotification = styled(NotificationBox)`
+  @media (max-width: 500px) {
+    
+  }
+`;
+const QuestionStyled = styled(Question)``;
 const ContainerQuestion = styled.div`
   margin-bottom: 50px;
   width: 350px;

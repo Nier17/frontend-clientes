@@ -106,15 +106,16 @@ const ButtonStyled = styled.div`
           fill: white;
         }
       `;
-    // else if (props.type === "error-primary")
-    //   return css`
-    //     background-color: #fbe5e5;
-    //     color: #f44336;
-
-    //     ${IconSVGLeft} {
-    //       fill: #f44336;
-    //     }
-    //   `;
+    else if (props.type === "information-tertiary")
+      return css`
+        /* background-color: #284b63; */
+        /* color: #f44336; */
+        border-radius: 15px;
+        border: 1px solid #284b63;
+        ${IconSVGLeft} {
+          fill: #f44336;
+        }
+      `;
   }}
 
   ${(props) =>

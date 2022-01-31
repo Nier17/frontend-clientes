@@ -72,8 +72,8 @@ const InputWrapper = styled.div`
       return css`
         border: 1px solid #cccccc;
         :focus-within {
-          border: 1px solid #33c494;
-          box-shadow: 0 0 0 1px #33c494;
+          border: 1px solid #284b63;
+          box-shadow: 0 0 0 1px #284b63;
         }
       `;
   }}
