@@ -1,5 +1,5 @@
 import moment from "moment";
 
 const toFormat = (date, format) => moment(date).format(format);
-
-export default { toFormat };
+const getAgeByFecNac = (date) => moment().diff(moment(date), "years");
+export default { toFormat, getAgeByFecNac };

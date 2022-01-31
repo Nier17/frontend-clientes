@@ -14,7 +14,7 @@ const Promedio = () => {
       <Header>
         <Title>Promedio</Title>
       </Header>
-      <Label>El promedio es: {promedio}</Label>
+      <Label>El promedio de edades es: {promedio}</Label>
     </BagStyled>
   );
 };

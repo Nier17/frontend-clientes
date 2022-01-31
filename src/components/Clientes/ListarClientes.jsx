@@ -7,11 +7,6 @@ import Bag from "../Bag";
 
 const ListarClientes = () => {
   const [clientes, setClientes] = useState([]);
-  // async function getData() {
-  //   const a = await axios.get(URL);
-  //   setClientes(a.data);
-  // }
-
   useEffect(() => {
     ClientesAPI.getClientes(setClientes);
   }, []);
@@ -59,7 +54,7 @@ const ListarClientes = () => {
   return (
     <BagStyled>
       <Header>
-        <Title>Listar clientes</Title>
+        <Title>Lista de clientes</Title>
       </Header>
       <Table ref={tableRef} columns={COLUMNS} data={clientes} />
     </BagStyled>
