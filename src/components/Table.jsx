@@ -266,7 +266,7 @@ const SortedTagSVG = styled.div`
   width: 10px;
   height: 10px;
 
-  fill: #33c494;
+  fill: #284b63;
 
   margin: 5px;
 `;

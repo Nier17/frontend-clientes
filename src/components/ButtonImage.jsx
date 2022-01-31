@@ -74,7 +74,7 @@ const ButtonStyled = styled.div`
   ${(props) => {
     if (props.type === "primary")
       return css`
-        background-color: #33c494;
+        background-color: #284b63;
 
         ${IconSVG} {
           fill: white;
@@ -83,10 +83,10 @@ const ButtonStyled = styled.div`
     else if (props.type === "secondary")
       return css`
         background-color: white;
-        border: 1px solid #33c494;
+        border: 1px solid #284b63;
 
         ${IconSVG} {
-          fill: #33c494;
+          fill: #284b63;
         }
       `;
     else if (props.type === "tertiary")

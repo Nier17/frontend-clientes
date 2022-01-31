@@ -1,24 +1,12 @@
 import axios from "axios";
 
 const URLClientes = "http://143.198.120.82:3000/clientes";
+const URLPromedio = "http://143.198.120.82:3000/promedio";
 
-const getClientes = () => {
-  axios
-    .get(URLClientes)
-
-    .then((res) => {
-      console.log(res.data);
-      return res.data;
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-};
-
-// const createCliente = (data) => {
-//   console.log(data);
-//   axios.post(URLClientes, data).then((res) => {});
-// };
+async function getClientes(setClientes) {
+  const a = await axios.get(URLClientes);
+  setClientes(a.data);
+}
 
 const createCliente = (data) =>
   new Promise((res, rej) => {
@@ -32,7 +20,13 @@ const createCliente = (data) =>
       });
   });
 
+async function getPromedio(setPromedio) {
+  const a = await axios.get(URLPromedio);
+  setPromedio(a.data);
+}
+
 export default {
   getClientes,
   createCliente,
+  getPromedio,
 };

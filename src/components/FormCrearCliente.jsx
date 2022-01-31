@@ -7,6 +7,7 @@ import produce from "immer";
 import { InputField } from "./WithFormik";
 import Spinner from "./Spinner";
 import HelperObj from "../helpers/HelperObj";
+import Button from "./Button";
 const FormCrearCliente = ({
   initData,
   onSubmit,
@@ -106,8 +107,8 @@ const FormCrearCliente = ({
 
             <ButtonWrapper>
               <StyledButton
-                type="submit"
-                // text={"Guardar"}
+                type="primary"
+                text={"Crear"}
                 onClick={() => {
                   console.log("hodssd");
                   submitForm();
@@ -174,15 +175,16 @@ const ContainerQuestionRight = styled.div`
     margin-bottom: 10px;
   }
 `;
-const StyledButton = styled.button`
-  width: 100%;
+const StyledButton = styled(Button)`
+  width: 350px;
+  align-self: baseline;
 `;
 const ButtonWrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: end;
-  flex-wrap: wrap;
-  width: 650px;
+  /* align-items: center; */
+  /* justify-content: end; */
+  /* flex-wrap: wrap; */
+  /* width: 650px; */
 
   /* width: 100%; */
 `;

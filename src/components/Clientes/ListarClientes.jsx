@@ -2,20 +2,18 @@ import React, { useEffect, useRef, useMemo, useState } from "react";
 import ClientesAPI from "../../api/ClientesAPI";
 import Table from "../Table";
 import styled, { css } from "styled-components";
-import axios from "axios";
 import HelperDate from "../../helpers/HelperDate";
 import Bag from "../Bag";
-const URL = "http://143.198.120.82:3000/clientes";
 
 const ListarClientes = () => {
   const [clientes, setClientes] = useState([]);
-  async function getData() {
-    const a = await axios.get(URL);
-    setClientes(a.data);
-  }
+  // async function getData() {
+  //   const a = await axios.get(URL);
+  //   setClientes(a.data);
+  // }
 
   useEffect(() => {
-    getData();
+    ClientesAPI.getClientes(setClientes);
   }, []);
 
   useEffect(() => {
@@ -60,6 +58,9 @@ const ListarClientes = () => {
   );
   return (
     <BagStyled>
+      <Header>
+        <Title>Listar clientes</Title>
+      </Header>
       <Table ref={tableRef} columns={COLUMNS} data={clientes} />
     </BagStyled>
   );
@@ -72,6 +73,16 @@ const Label = styled.div`
 `;
 const BagStyled = styled(Bag)`
   flex: 1 0 0;
+`;
+const Header = styled.div`
+  margin-bottom: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+const Title = styled.div`
+  font-size: 1.2em;
 `;
 
 export default ListarClientes;

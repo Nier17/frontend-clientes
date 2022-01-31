@@ -99,96 +99,22 @@ const ButtonStyled = styled.div`
   ${(props) => {
     if (props.type === "primary")
       return css`
-        background-color: #33c494;
+        background-color: #284b63;
         color: white;
 
         ${IconSVGLeft} {
           fill: white;
         }
       `;
-    else if (props.type === "secondary")
-      return css`
-        background-color: white;
-        color: #33c494;
-        border: 1px solid #33c494;
+    // else if (props.type === "error-primary")
+    //   return css`
+    //     background-color: #fbe5e5;
+    //     color: #f44336;
 
-        ${IconSVGLeft} {
-          fill: #33c494;
-        }
-      `;
-    else if (props.type === "tertiary")
-      return css`
-        background-color: #eaf9f4;
-        color: #33c494;
-
-        ${IconSVGLeft} {
-          fill: #33c494;
-        }
-      `;
-    else if (props.type === "quartary")
-      return css`
-        color: #33c494;
-
-        ${IconSVGLeft} {
-          fill: #33c494;
-        }
-      `;
-    else if (props.type === "information-primary")
-      return css`
-        background-color: #2cadd1;
-        color: white;
-
-        ${IconSVGLeft} {
-          fill: white;
-        }
-      `;
-    else if (props.type === "information-secondary")
-      return css`
-        background-color: white;
-        color: #2cadd1;
-        border: 1px solid #2cadd1;
-
-        ${IconSVGLeft} {
-          fill: #2cadd1;
-        }
-      `;
-    else if (props.type === "information-tertiary")
-      return css`
-        background-color: #deecf1;
-        color: #2cadd1;
-
-        ${IconSVGLeft} {
-          fill: #2cadd1;
-        }
-      `;
-    else if (props.type === "error-primary")
-      return css`
-        background-color: #f44336;
-        color: white;
-
-        ${IconSVGLeft} {
-          fill: white;
-        }
-      `;
-    else if (props.type === "error-secondary")
-      return css`
-        background-color: white;
-        color: #f44336;
-        border: 1px solid #f44336;
-
-        ${IconSVGLeft} {
-          fill: #f44336;
-        }
-      `;
-    else if (props.type === "error-tertiary")
-      return css`
-        background-color: #fbe5e5;
-        color: #f44336;
-
-        ${IconSVGLeft} {
-          fill: #f44336;
-        }
-      `;
+    //     ${IconSVGLeft} {
+    //       fill: #f44336;
+    //     }
+    //   `;
   }}
 
   ${(props) =>
