@@ -1,7 +1,10 @@
 import axios from "axios";
 
-const URLClientes = "http://143.198.120.82:3000/clientes";
-const URLPromedio = "http://143.198.120.82:3000/promedio";
+// const URLClientes = "http://143.198.120.82:3000/clientes";
+// const URLPromedio = "http://143.198.120.82:3000/promedio";
+
+const URLClientes = "http://159.223.161.105:3000/clientes";
+const URLPromedio = "http://159.223.161.105:3000/promedio";
 
 async function getClientes(setClientes) {
   const a = await axios.get(URLClientes);
